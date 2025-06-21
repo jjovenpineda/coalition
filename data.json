@@ -1,0 +1,14 @@
+[
+  {
+    "slug": "react-server-components",
+    "title": "Understanding React Server Components",
+    "content": "Server components allow rendering on the server without sending JS to the client.",
+    "updatedAt": "2025-06-01T14:00:00Z"
+  },
+  {
+    "slug": "nextjs-caching",
+    "title": "Mastering Next.js Caching Strategies",
+    "content": "ISR, SSR, and static generation each have trade-offs for performance.",
+    "updatedAt": "2025-06-02T09:30:00Z"
+  }
+]
