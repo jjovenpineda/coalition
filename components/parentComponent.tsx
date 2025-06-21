@@ -5,10 +5,13 @@ import ChildComponent from "./childComponent";
 export default function ParentComponent() {
   const [count, setCount] = useState(0);
 
-  /* const handleClick = useCallback(() => {
+  const handleClick = useCallback(() => {
     setCount((prev) => prev + 1);
     console.log("Button clicked");
-  }, []);  */ // 🔁 This function is memoized and won't re-create unless dependencies change
+  }, []);
+  {
+    /* This handleClick() is memoized and being passed as a prop the the child. without usecallback. React.memo will treat this as  new function on every render, and that will cause the child te re-rendered */
+  }
 
   return (
     <div>
@@ -18,7 +21,14 @@ export default function ParentComponent() {
       </button>
 
       {/* Passing memoized function to child */}
-      <ChildComponent name={"joven"} />
+      <ChildComponent onClick={handleClick} />
     </div>
   );
 }
+
+// onClick={handleClick} || ❌ No  ||Same function reference
+// onClick={() => handleClick()} || ✅ Yes || New function created every render
+
+//useCallback memoizes a function, meaning:
+//	•	It returns the same function instance unless its dependencies change.
+//	•	This is useful to prevent unnecessary re-renders, especially when passing functions to child components.
