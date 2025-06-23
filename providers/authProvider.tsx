@@ -30,15 +30,15 @@ interface Auth {
   username: string;
   password: string;
 }
-const user = { username: "", password: "" };
+const languages = ["JavaScript", "Python"];
 
 const AuthContext = createContext<{
   data: Auth;
   setData: (value: Auth) => void;
-}>({ data: user, setData: () => {} });
+}>({ data: { username: "", password: "" }, setData: () => {} });
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [data, setData] = useState<Auth>(user);
+  const [data, setData] = useState<Auth>({ username: "", password: "" });
   return (
     <AuthContext.Provider value={{ data, setData }}>
       {children}
