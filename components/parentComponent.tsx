@@ -4,11 +4,13 @@ import ChildComponent from "./childComponent";
 
 export default function ParentComponent() {
   const [count, setCount] = useState(0);
-
+  let num = 0; //primitive
+  const person = { name: "" }; //nonprimitive
   const handleClick = useCallback(() => {
     setCount((prev) => prev + 1);
     console.log("Button clicked");
   }, []);
+  const handclick = () => {};
   {
     /* This handleClick() is memoized and being passed as a prop the the child. without usecallback. React.memo will treat this as  new function on every render, and that will cause the child te re-rendered */
   }
@@ -21,7 +23,7 @@ export default function ParentComponent() {
       </button>
 
       {/* Passing memoized function to child */}
-      <ChildComponent onClick={handleClick} />
+      <ChildComponent onClick={() => handleClick()} />
     </div>
   );
 }
